@@ -29,9 +29,9 @@
             <li>E is good. Congratulations!</li>
         </ol>
     </table>
-    <p>In this example we drew a picture of a tree. The tree is an abstract model of the possible sequences of choices we could make. There is also a data structure called a tree, but usually we don't have a data structure to tell us what choices we have. (If we do have an actual tree data structure, backtracking on it is called depth-first tree searching.)</p>
+    <p style="border: 2px solid grey; background-color: grey; border-radius: 5px;">In this example we drew a picture of a tree. The tree is an abstract model of the possible sequences of choices we could make. There is also a data structure called a tree, but usually we don't have a data structure to tell us what choices we have. (If we do have an actual tree data structure, backtracking on it is called depth-first tree searching.)</p>
     <h3>The backtracking algorithm.</h3>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; border: 2px solid grey; border-radius: 5px; color: blue;">
         boolean solve(Node n) {
             if n is a leaf node {
                 if the leaf is a goal node, return true
@@ -44,7 +44,7 @@
             }
         }
     </pre>
-    <p>Notice that the algorithm is expressed as a boolean function. This is essential to understanding the algorithm. If solve(n) is true, that means node n is part of a solution--that is, node n is one of the nodes on a path from the root to some goal node. We say that n is solvable.If solve(n) is false, then there is no path that includes n to any goal node</p>
+    <p style="border: 2px solid grey; border-radius: 5px; background-color: grey;">Notice that the algorithm is expressed as a boolean function. This is essential to understanding the algorithm. If solve(n) is true, that means node n is part of a solution--that is, node n is one of the nodes on a path from the root to some goal node. We say that n is solvable.If solve(n) is false, then there is no path that includes n to any goal node</p>
     <p>How does this work?</p>
     <table>
         <ul>
@@ -53,14 +53,14 @@
         </ul>
     </table>
     <p>Hence, to decide whether any non-leaf node n is solvable (part of a path to a goal node), all you have to do is test whether any child of n is solvable. This is done recursively, on each child of n. In the above code, this is done by the lines</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         for each child c of n {
             if solve(c) succeeds, return true
         }
         return false
     </pre>
     <p>Eventually the recursion will "bottom" out at a leaf node. If the leaf node is a goal node, it is solvable; if the leaf node is not a goal node, it is not solvable. This is our base case. In the above code, this is done by the lines</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         if n is a leaf node {
             if the leaf is a goal node, return true
             else return false
@@ -80,7 +80,7 @@
     </table>
 <h3>Non-recursive backtracking, using a stack</h3>
 <p>Backtracking is a rather typical recursive algorithm, and any recursive algorithm can be rewritten as a stack algorithm. In fact, that is how your recursive algorithms are translated into machine or assembly language</p>
-<pre style="font-size: 15px;">
+<pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
     boolean solve(Node n) {
         put node n on the stack;
         while the stack is not empty {
@@ -103,7 +103,7 @@
 <p>When the stack algorithm terminates successfully, the nodes on the stack form (in reverse order) a path from the root to a goal node</p>
 <p>Similarly, when the recursive algorithm finds a goal node, the path information is embodied (in reverse order) in the sequence of recursive calls. Thus as the recursion unwinds, the path can be recovered one node at a time, by (for instance) printing the node at the current level, or storing it in an array.</p>
 <p>Here is the recursive backtracking algorithm, modified slightly to print (in reverse order) the nodes along the successful path:</p>
-<pre style="font-size: 15px;">
+<pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
     boolean solve(Node n) {
         if n is a leaf node {
             if the leaf is a goal node {
@@ -140,7 +140,7 @@
 <img src="https://akarsh-gupta007.github.io/backtracking/treesearch.gif">
 </center>
 <p>Here's a definition of the BinaryTree class:</p>
-<pre style="font-size: 15px;">
+<pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
     public class BinaryTree {
         BinaryTree leftChild = null;
         BinaryTree rightChild = null;
@@ -156,7 +156,7 @@
     }
 </pre>
 <p>next we will create a TreeSearch class, and in it we will define a method makeTree which constructs the above binary tree.</p>
-<pre style="font-size: 15px;">
+<pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
     static BinaryTree makeTree() {
         BinaryTree root, a, b, c, d, e, f;
         c = new BinaryTree("C", null, null, false);
@@ -169,7 +169,7 @@
         return root;
     }
 </pre>
-<pre style="font: 15px;">
+<pre style="font: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
 <p>Here's a main program to create a binary tree and try to solve it:</p>
 public static void main(String args[]) {
     BinaryTree tree = makeTree();
@@ -177,7 +177,7 @@ public static void main(String args[]) {
 }
 </pre>
 <p>And finally, here's the recursive backtracking routine to "solve" the binary tree by finding a goal node.</p>
-<pre style="font-size: 15px;">
+<pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
     static boolean solvable(BinaryTree node) {
         /* 1 */  if (node == null) return false;
         /* 2 */  if (node.isGoalNode) return true;
@@ -222,7 +222,7 @@ public static void main(String args[]) {
       <p>int[] nextRowAndColumn(int row, int column)</p>
       <p>Used by both methods to find the next "country" (actually, the row and column of the next square on the checkerboard).</p>
       <p>Here's the code for method 1:</p>
-      <pre style="font-size: 15px;">
+      <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         boolean explore1(int row, int column, int color) {
             if (row >= NUM_ROWS) return mapIsOK();
             map[row][column] = color;
@@ -234,7 +234,7 @@ public static void main(String args[]) {
         }
       </pre>
       <p>And here's the code for method 2:</p>
-      <pre style="font-size: 15px;">
+      <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         boolean explore2(int row, int column, int color) {
             if (row >= NUM_ROWS) return true;
             if (okToColor(row, column, color)) {
@@ -274,7 +274,7 @@ public static void main(String args[]) {
     <p><b>Trick #1: Indent when you print method entries and exits.</b> Often, the best debugging technique is to print every method call and return (or at least the most important ones). You probably want to print, for each method, what parameters it came in with, and what value it leaves with. However, if you just print a long list of these, it's hard to match up method exits with their corresponding entries. Indenting to show the level of nesting can help.</p>
     <p><b>Trick #2: Use specialized print methods for debugging.</b> Don't clutter up your actual code more than you must. Also, remember that code inserted for debugging purposes can itself contain bugs, or (in the worst case) can affect the results, so be very careful with it</p>
     <p>Here's our debugging code. For this trivial program, there's almost more debugging code than actual code, but in larger programs the proportions will be better.</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         static String name(BinaryTree node) {
             if (node == null) return null;
             else return node.name;
@@ -295,7 +295,7 @@ public static void main(String args[]) {
         }
     </pre>
     <p>To use this code, we modify solvable as follows:</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         static boolean solvable(BinaryTree node) {
             enter(node);
             if (node == null) return no(node);
@@ -332,7 +332,7 @@ public static void main(String args[]) {
     <p><b>Trick #3: Never discard your debugging statements.</b> Writing debugging statements is programming, too. Often it's as much work to debug the debugging statements as it is to debug the actual program. Once your program is working, why throw this code away?</p>
     <p>Obviously, you don't want to print out all this debugging information from a program you are ready to submit (or to turn over to your manager). You could comment out your debugging calls, but that can be a lot of work. What's more, in the above example, you would have to replace every return(yes(node)) with return(true), and every return(no(node)) with return(false). With all these changes, you might introduce new bugs into your program.</p>
     <p>The simple solution is to make your debugging statements conditional. For example,</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         static final boolean debugging = false;
     static void enter(BinaryTree node) {
         if (debugging) {
@@ -357,9 +357,9 @@ public static void main(String args[]) {
     </pre>
     <p>In industry, actual programs often have multiple flags to control different aspects of debugging. Don't worry too much about making your code larger; modern compilers will notice that since the variable dibugging is final , and the controlled code will be discarded.</p>
     <p><b>Trick #4: Create an Exception.</b> If an Exception is thrown, you can get information about just where it happened by sending it the message printStackTrace(PrintStream). Since an Exception is an object like any other, you can create and throw your own Exceptions. However, Java programmers don't always realize that you can create an Exception without throwing it. For example, the following code</p>
-    <p>new Exception("Checkpoint Charlie").printStackTrace(System.out);</p>
+    <p style="color: blue; border: 2px solid grey; border-radius: 5px;">new Exception("Checkpoint Charlie").printStackTrace(System.out);</p>
     <p>will print out a message something like this, and the program will then continue normally. That is, the above code just acts like a print statement.</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
     java.lang.Exception: Checkpoint Charlie
         at TreeSearch.solvable(TreeSearch.java:53)
         at TreeSearch.solvable(TreeSearch.java:57)
@@ -475,7 +475,7 @@ public static void main(String args[]) {
     </li>
     <p>We write another method int[] makeMove(int[] oldBoard, int position) that will take a board and a position, make a move from that position, and return as its value a new board. (We could write this somewhat more efficiently by changing the old board, rather than creating a new one, but here we are more concerned with simplicity.) In technical jargon, makeMove is "applicative" rather than "mutative."</p>
     <p>With these methods, our central backtracking method can be written as follows:</p>
-    <pre style="font-size: 15px;">
+    <pre style="font-size: 15px; color: blue; border: 2px solid grey; border-radius: 5px;">
         boolean solvable(int[] board) {
             if (puzzleSolved(board)) {
                 return true;
@@ -494,22 +494,22 @@ public static void main(String args[]) {
     </pre>
     <p>Along with canMove and makeMove, we are using methods puzzleSolved And printBoard with meanings that should be obvious.</p>
     <p>Here is some output from the program:</p>
-<p>16. <b>WHITE  WHITE  WHITE  _____  BLACK  BLACK  BLACK</b></p>
-<p>15.  <b>WHITE  WHITE  WHITE  BLACK  _____  BLACK  BLACK</b></p>
-<p>14.  <b>WHITE  WHITE  _____  BLACK  WHITE  BLACK  BLACK</b></p>
-<p>13.  <b>WHITE  _____  WHITE  BLACK  WHITE  BLACK  BLACK</b></p>
-<p>12.  <b>WHITE  BLACK  WHITE  _____  WHITE  BLACK  BLACK</b></p>
-<p>11.  <b>WHITE  BLACK  WHITE  BLACK  WHITE  _____  BLACK</b></p>
-<p>10. <b>WHITE  BLACK  WHITE  BLACK  WHITE  BLACK  _____</b></p>
-<p>9.    <b>WHITE  BLACK  WHITE  BLACK  _____  BLACK  WHITE</b></p>
-<p>8.  <b>WHITE  BLACK  _____  BLACK  WHITE  BLACK  WHITE</b></p>
-<p>7.  <b>______  BLACK  WHITE  BLACK  WHITE  BLACK  WHITE</b></p>
-<p>6.  <b>BLACK  _____  WHITE  BLACK  WHITE  BLACK  WHITE</b></p>
-<p>5.  <b>BLACK  BLACK  WHITE  _____  WHITE  BLACK  WHITE</b></p>
-<p>4.  <b>BLACK  BLACK  WHITE  BLACK  WHITE  _____  WHITE</b></p>
-<p>3.  <b>BLACK  BLACK  WHITE  BLACK  _____  WHITE  WHITE</b></p>
-<p>2.  <b>BLACK  BLACK  _____  BLACK  WHITE  WHITE  WHITE</b></p>
-<p>1.  <b>BLACK  BLACK  BLACK  _____  WHITE  WHITE  WHITE</b></p>
-<p>Notice that the solution is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last line. I've added line numbers to the actual output in order to emphasize this point. Backtracking always produces its results (sequence of choices) in reverse order; it is up to you, the programmer, to reverse the results again to get them in the correct order.</p>
+<p><em style="color: blue;">16.</em> <b>WHITE  WHITE  WHITE  _____  BLACK  BLACK  BLACK</b></p>
+<p><em style="color: blue;">15.</em>  <b>WHITE  WHITE  WHITE  BLACK  _____  BLACK  BLACK</b></p>
+<p><em style="color: blue;">14.</em>  <b>WHITE  WHITE  _____  BLACK  WHITE  BLACK  BLACK</b></p>
+<p><em style="color: blue;">13.</em>  <b>WHITE  _____  WHITE  BLACK  WHITE  BLACK  BLACK</b></p>
+<p><em style="color: blue;">12.</em>  <b>WHITE  BLACK  WHITE  _____  WHITE  BLACK  BLACK</b></p>
+<p><em style="color: blue;">11.</em>  <b>WHITE  BLACK  WHITE  BLACK  WHITE  _____  BLACK</b></p>
+<p><em style="color: blue;">10.</em> <b>WHITE  BLACK  WHITE  BLACK  WHITE  BLACK  _____</b></p>
+<p><em style="color: blue;">9.</em>    <b>WHITE  BLACK  WHITE  BLACK  _____  BLACK  WHITE</b></p>
+<p><em style="color: blue;">8.</em>  <b>WHITE  BLACK  _____  BLACK  WHITE  BLACK  WHITE</b></p>
+<p><em style="color: blue;">7.</em>  <b>______  BLACK  WHITE  BLACK  WHITE  BLACK  WHITE</b></p>
+<p><em style="color: blue;">6.</em>  <b>BLACK  _____  WHITE  BLACK  WHITE  BLACK  WHITE</b></p>
+<p><em style="color: blue;">5.</em>  <b>BLACK  BLACK  WHITE  _____  WHITE  BLACK  WHITE</b></p>
+<p><em style="color: blue;">4.</em>  <b>BLACK  BLACK  WHITE  BLACK  WHITE  _____  WHITE</b></p>
+<p><em style="color: blue;">3.</em>  <b>BLACK  BLACK  WHITE  BLACK  _____  WHITE  WHITE</b></p>
+<p><em style="color: blue;">2.</em> <b>BLACK  BLACK  _____  BLACK  WHITE  WHITE  WHITE</b></p>
+<p><em style="color: blue;">1.</em>  <b>BLACK  BLACK  BLACK  _____  WHITE  WHITE  WHITE</b></p>
+<p style="border: 2px solid grey; border-radius: 5px; background-color: lightgray;">Notice that the solution is given in reverse order: BLACK starts out on the left and WHITE on the right, as in the last line. I've added line numbers to the actual output in order to emphasize this point. Backtracking always produces its results (sequence of choices) in reverse order; it is up to you, the programmer, to reverse the results again to get them in the correct order.</p>
 </body>
 </html>
